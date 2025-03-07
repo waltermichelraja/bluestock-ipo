@@ -66,23 +66,6 @@ def get_stock_data(request, symbol):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def search_stocks(request, query):
-    params = {
-        "function": "SYMBOL_SEARCH",
-        "keywords": query,
-        "apikey": settings.ALPHA_VANTAGE_API_KEY
-    }
-
-    response = requests.get(BASE_URL, params=params)
-
-    if response.status_code == 200:
-        data = response.json()
-        return Response(data)
-
-    return Response({"error": "Failed to fetch stock symbols"}, status=500)
-
-@api_view(['GET'])
-@permission_classes([AllowAny])
 def get_stock_history(request, symbol):
     cache_key = f"stock_history_{symbol}"
     cached_data = cache.get(cache_key)
@@ -122,3 +105,20 @@ def get_stock_history(request, symbol):
     cache.set(cache_key, historical_data, timeout=86400)
 
     return Response(historical_data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def search_stocks(request, query):
+    params = {
+        "function": "SYMBOL_SEARCH",
+        "keywords": query,
+        "apikey": settings.ALPHA_VANTAGE_API_KEY
+    }
+
+    response = requests.get(BASE_URL, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        return Response(data)
+
+    return Response({"error": "Failed to fetch stock symbols"}, status=500)
