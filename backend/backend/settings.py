@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
-ALPHA_VANTAGE_API_KEY = env("ALPHA_VANTAGE_API_KEY")
+FMP_API_KEY = env("FMP_API_KEY")
 
 # Application definition
 
