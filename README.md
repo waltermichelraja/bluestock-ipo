@@ -150,3 +150,186 @@ Content-Type: application/json
 | Get User | `/api/auth/user` | `GET` | `Authorization: Bearer <access_token>` |
 | Logout | `/api/auth/logout` | `POST` | `refresh` token in request body |
 
+---
+
+# Stocks API Endpoints
+
+## **>> Get All Stocks**
+**Endpoint:**  
+```
+GET /api/stocks/
+```
+**Response (Success - 200 OK):**  
+```json
+[
+  {
+    "symbol": "AAPL",
+    "name": "Apple Inc.",
+    "currency": "USD",
+    "exchange": "NASDAQ"
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Alphabet Inc.",
+    "currency": "USD",
+    "exchange": "NASDAQ"
+  }
+]
+```
+**Response (Failure - 500 Internal Server Error):**  
+```json
+{
+  "error": "Failed to fetch stock list"
+}
+```
+
+---
+
+## **>> Get Stock Data**
+**Endpoint:**  
+```
+GET /api/stocks/<symbol>/
+```
+**Response (Success - 200 OK):**  
+```json
+{
+  "symbol": "AAPL",
+  "name": "Apple Inc.",
+  "industry": "Technology",
+  "sector": "Consumer Electronics",
+  "market_cap": 2500000000000,
+  "currency": "USD",
+  "price": 180.50,
+  "exchange": "NASDAQ",
+  "website": "https://www.apple.com"
+}
+```
+**Response (Failure - 500 Internal Server Error):**  
+```json
+{
+  "error": "Failed to fetch stock details"
+}
+```
+
+---
+
+## **>> Search Stocks**
+**Endpoint:**  
+```
+GET /api/stocks/search/<query>/
+```
+**Response (Success - 200 OK):**  
+```json
+{
+  "stocks": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "currency": "USD",
+      "stockExchange": "NASDAQ"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com Inc.",
+      "currency": "USD",
+      "stockExchange": "NASDAQ"
+    }
+  ]
+}
+```
+**Response (Failure - 500 Internal Server Error):**  
+```json
+{
+  "error": "Failed to fetch stock symbols"
+}
+```
+
+---
+
+## **>> Get Stock Historical Data**
+**Endpoint:**  
+```
+GET /api/stocks/<symbol>/history/
+```
+**Response (Success - 200 OK):**  
+```json
+{
+  "symbol": "AAPL",
+  "historical": [
+    {
+      "date": "2024-03-01",
+      "open": 178.00,
+      "high": 182.00,
+      "low": 177.50,
+      "close": 180.50
+    },
+    {
+      "date": "2024-02-29",
+      "open": 175.00,
+      "high": 179.50,
+      "low": 174.80,
+      "close": 178.00
+    }
+  ]
+}
+```
+**Response (Failure - 500 Internal Server Error):**  
+```json
+{
+  "error": "Failed to fetch historical data"
+}
+```
+
+---
+
+## **>> Get Trending Stocks**
+**Endpoint:**  
+```
+GET /api/stocks/trending/
+```
+**Response (Success - 200 OK):**  
+```json
+{
+  "trending_stocks": [
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "price": 550.75,
+      "change": 15.30,
+      "change_percent": 2.85,
+      "day_high": 560.00,
+      "day_low": 540.50,
+      "market_cap": 1350000000000
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc.",
+      "price": 210.00,
+      "change": 5.20,
+      "change_percent": 2.55,
+      "day_high": 215.00,
+      "day_low": 205.50,
+      "market_cap": 700000000000
+    }
+  ]
+}
+```
+**Response (Failure - 500 Internal Server Error):**  
+```json
+{
+  "error": "Failed to fetch trending stocks"
+}
+```
+
+---
+
+## **>> Summary**
+| Action | Endpoint | Method | Required Parameters |
+|--------|----------|--------|--------------------|
+| Get All Stocks | `/api/stocks/` | `GET` | None |
+| Get Stock Data | `/api/stocks/<symbol>/` | `GET` | `symbol` |
+| Search Stocks | `/api/stocks/search/<query>/` | `GET` | `query` |
+| Get Stock History | `/api/stocks/<symbol>/history/` | `GET` | `symbol` |
+| Get Trending Stocks | `/api/stocks/trending/` | `GET` | None |
+
+
