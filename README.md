@@ -332,4 +332,140 @@ GET /api/stocks/trending/
 | Get Stock History | `/api/stocks/<symbol>/history/` | `GET` | `symbol` |
 | Get Trending Stocks | `/api/stocks/trending/` | `GET` | None |
 
+---
+
+# Portfolio API Endpoints
+
+### **>> Get User's Portfolio**
+**Endpoint:**  
+```
+GET /api/portfolio
+```
+**Headers:**  
+```http
+Authorization: Bearer <access_token>
+```
+**Response (Success - 200 OK):**  
+```json
+{
+  "stocks": [
+    {
+      "id": 1,
+      "symbol": "AAPL",
+      "quantity": 10,
+      "purchase_price": 150.00
+    }
+  ]
+}
+```
+
+---
+
+### **>> Add Stock to Portfolio**
+**Endpoint:**  
+```
+POST /api/portfolio/add
+```
+**Headers:**  
+```http
+Authorization: Bearer <access_token>
+Content-Type: application/json
+```
+**Request Body (JSON):**  
+```json
+{
+  "symbol": "AAPL",
+  "quantity": 10,
+  "purchase_price": 150.00
+}
+```
+**Response (Success - 201 Created):**  
+```json
+{
+  "id": 1,
+  "symbol": "AAPL",
+  "quantity": 10,
+  "purchase_price": 150.00
+}
+```
+
+---
+
+### **>> Remove Stock from Portfolio**
+**Endpoint:**  
+```
+DELETE /api/portfolio/<stockId>/delete
+```
+**Headers:**  
+```http
+Authorization: Bearer <access_token>
+```
+**Response (Success - 204 No Content):**  
+```json
+{}
+```
+
+---
+
+### **>> Update Stock Details in Portfolio**
+**Endpoint:**  
+```
+PUT /api/portfolio/<tockId>/update
+```
+**Headers:**  
+```http
+Authorization: Bearer <access_token>
+Content-Type: application/json
+```
+**Request Body (JSON):**  
+```json
+{
+  "quantity": 15,
+  "purchase_price": 155.00
+}
+```
+**Response (Success - 200 OK):**  
+```json
+{
+  "id": 1,
+  "symbol": "AAPL",
+  "quantity": 15,
+  "purchase_price": 155.00
+}
+```
+
+---
+
+### **>> Get Portfolio Performance**
+**Endpoint:**  
+```
+GET /api/portfolio/performance
+```
+**Headers:**  
+```http
+Authorization: Bearer <access_token>
+```
+**Response (Success - 200 OK):**  
+```json
+{
+  "total_value": 15000.50,
+  "total_gain": 500.25,
+  "percentage_change": 3.45
+}
+```
+
+---
+
+## **>> Summary**
+
+| Action | Endpoint | Method | Required Fields |
+|--------|----------|--------|----------------|
+| Get Portfolio | `/api/portfolio` | `GET` | `Authorization: Bearer <access_token>` |
+| Add Stock | `/api/portfolio/add` | `POST` | `Authorization: Bearer <access_token>`, `symbol`, `quantity`, `purchase_price` |
+| Remove Stock | `/api/portfolio/{stockId}` | `DELETE` | `Authorization: Bearer <access_token>` |
+| Update Stock | `/api/portfolio/{stockId}` | `PUT` | `Authorization: Bearer <access_token>`, `quantity`, `purchase_price` |
+| Get Portfolio Performance | `/api/portfolio/performance` | `GET` | `Authorization: Bearer <access_token>` |
+
+---
+
 
