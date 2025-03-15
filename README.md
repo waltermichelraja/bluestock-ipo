@@ -462,8 +462,8 @@ Authorization: Bearer <access_token>
 |--------|----------|--------|----------------|
 | Get Portfolio | `/api/portfolio` | `GET` | `Authorization: Bearer <access_token>` |
 | Add Stock | `/api/portfolio/add` | `POST` | `Authorization: Bearer <access_token>`, `symbol`, `quantity`, `purchase_price` |
-| Remove Stock | `/api/portfolio/{stockId}` | `DELETE` | `Authorization: Bearer <access_token>` |
-| Update Stock | `/api/portfolio/{stockId}` | `PUT` | `Authorization: Bearer <access_token>`, `quantity`, `purchase_price` |
+| Remove Stock | `/api/portfolio/{stockId}/delete` | `DELETE` | `Authorization: Bearer <access_token>` |
+| Update Stock | `/api/portfolio/{stockId}/update` | `PUT` | `Authorization: Bearer <access_token>`, `quantity`, `purchase_price` |
 | Get Portfolio Performance | `/api/portfolio/performance` | `GET` | `Authorization: Bearer <access_token>` |
 
 ---
