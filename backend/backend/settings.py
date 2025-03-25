@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 import environ
 import os
 
@@ -34,6 +35,7 @@ env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 FMP_API_KEY = env("FMP_API_KEY")
+DATABASE_URL = env("DATABASE_URL")
 
 # Application definition
 
@@ -121,16 +123,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ipo_db',
-        'USER': 'postgres',
-        'PASSWORD': '25092006@wmr',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
 }
-
 
 
 # Password validation
