@@ -1,34 +1,41 @@
 # Authentication API
 | Action | Endpoint | Method | Required Fields |
-|--------|----------|--------|----------------|
-| Register | `/api/auth/register` | `POST` | `username`, `email`, `password`, `first_name`, `last_name` |
-| Login | `/api/auth/login` | `POST` | `username`, `password` |
-| Get User | `/api/auth/user` | `GET` | `Authorization: Bearer <access_token>` |
-| Logout | `/api/auth/logout` | `POST` | `refresh` token in request body |
+|---------|----------|--------|-----------------|
+| register | `/api/auth/register/` | `POST` | `username`, `email`, `password`, `first_name`, `last_name` |
+| login | `/api/auth/login/` | `POST` | `username`, `password` |
+| get user | `/api/auth/user/` | `GET` | `Authorization: Bearer <access_token>` |
+| logout | `/api/auth/logout/` | `POST` | `refresh` token in request body |
 
 ---
 
 # Stocks API
 | Action | Endpoint | Method | Required Parameters |
-|--------|----------|--------|--------------------|
-| Get All Stocks | `/api/stocks/` | `GET` | None |
-| Get Stock Data | `/api/stocks/<symbol>/` | `GET` | `symbol` |
-| Search Stocks | `/api/stocks/search/<query>/` | `GET` | `query` |
-| Get Stock History | `/api/stocks/<symbol>/history/` | `GET` | `symbol` |
-| Get Trending Stocks | `/api/stocks/trending/` | `GET` | None |
+|---------|----------|--------|-----------------|
+| get all stocks | `/api/stocks/` | `GET` | `none` |
+| get stock data | `/api/stocks/<symbol>/` | `GET` | `symbol` |
+| search stocks | `/api/stocks/search/<query>/` | `GET` | `query` |
+| get stock history | `/api/stocks/<symbol>/history/` | `GET` | `symbol` |
+| get trending stocks | `/api/stocks/trending/` | `GET` | `none` |
 
 ---
 
 # Portfolio API
 | Action | Endpoint | Method | Required Fields |
-|--------|----------|--------|----------------|
-| Get Portfolio | `/api/portfolio` | `GET` | `Authorization: Bearer <access_token>` |
-| Add Stock | `/api/portfolio/add` | `POST` | `Authorization: Bearer <access_token>`, `symbol`, `quantity`, `purchase_price` |
-| Remove Stock | `/api/portfolio/{stockId}/delete` | `DELETE` | `Authorization: Bearer <access_token>` |
-| Update Stock | `/api/portfolio/{stockId}/update` | `PUT` | `Authorization: Bearer <access_token>`, `quantity`, `purchase_price` |
-| Get Portfolio Performance | `/api/portfolio/performance` | `GET` | `Authorization: Bearer <access_token>` |
+|---------|----------|--------|-----------------|
+| get portfolio | `/api/portfolio/` | `GET` | `Authorization: Bearer <access_token>` |
+| add stock | `/api/portfolio/add/` | `POST` | `Authorization: Bearer <access_token>`, `symbol`, `quantity`, `purchase_price` |
+| remove stock | `/api/portfolio/{stockID}/delete/` | `DELETE` | `Authorization: Bearer <access_token>` |
+| update stock | `/api/portfolio/{stockID}/update/` | `PUT` | `Authorization: Bearer <access_token>`, `quantity`, `purchase_price` |
+| get performance | `/api/portfolio/performance/` | `GET` | `Authorization: Bearer <access_token>` |
 
 ---
 
 # Users API
+| Action | Endpoint | Method | Required Fields |
+|---------|----------|--------|-----------------|
+| update profile | `/api/users/profile/` | `PUT` | `Authorization: Bearer <access_token>`, `first_name`, `last_name`, `email` |
+| get watchlist | `/api/users/watchlist/` | `GET` | `Authorization: Bearer <access_token>` |
+| add watchlist | `/api/users/watchlist/add/` | `POST` | `Authorization: Bearer <access_token>`, `symbol`, `company_name` |
+| remove watchlist | `/api/users/watchlist/{stockID}/delete/` | `DELETE` | `Authorization: Bearer <access_token>`, |
+
 ---
