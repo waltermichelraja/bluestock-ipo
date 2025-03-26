@@ -81,7 +81,7 @@ def search_stocks(request, query):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_stock_history(request, symbol):
-    url = f"{BASE_URL}/historical-price-full/{symbol}?apikey={API_KEY}&serietype=line"
+    url = f"{BASE_URL}/historical-price-full/{symbol}?apikey={API_KEY}"
     response = requests.get(url)
     
     if response.status_code == 200:
@@ -108,16 +108,13 @@ def get_trending_stocks(request):
     
     if response.status_code == 200:
         data = response.json()
-        trending_stocks = [ 
+        trending_stocks = [
             {
                 "symbol": stock.get("symbol"),
                 "name": stock.get("name"),
                 "price": stock.get("price"),
                 "change": stock.get("change"),
-                "change_percent": stock.get("changesPercentage"),
-                "day_high": stock.get("dayHigh"),
-                "day_low": stock.get("dayLow"),
-                "market_cap": stock.get("marketCap")
+                "change_percent": stock.get("changesPercentage")
             }
             for stock in data
         ]
