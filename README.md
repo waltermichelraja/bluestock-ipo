@@ -4,7 +4,7 @@
 | register | `/api/auth/register/` | `POST` | `username`, `email`, `password`, `first_name`, `last_name` |
 | login | `/api/auth/login/` | `POST` | `username`, `password` |
 | get user | `/api/auth/user/` | `GET` | `Authorization: Bearer <access_token>` |
-| logout | `/api/auth/logout/` | `POST` | `refresh` token in request body |
+| logout | `/api/auth/logout/` | `POST` | `Authorization: Bearer <access_token>`, `refresh` token in request body |
 
 ---
 
