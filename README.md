@@ -1,5 +1,4 @@
 # Authentication API
----
 | Action | Endpoint | Method | Required Fields |
 |--------|----------|--------|----------------|
 | Register | `/api/auth/register` | `POST` | `username`, `email`, `password`, `first_name`, `last_name` |
@@ -10,7 +9,6 @@
 ---
 
 # Stocks API
----
 | Action | Endpoint | Method | Required Parameters |
 |--------|----------|--------|--------------------|
 | Get All Stocks | `/api/stocks/` | `GET` | None |
@@ -22,7 +20,6 @@
 ---
 
 # Portfolio API
----
 | Action | Endpoint | Method | Required Fields |
 |--------|----------|--------|----------------|
 | Get Portfolio | `/api/portfolio` | `GET` | `Authorization: Bearer <access_token>` |
