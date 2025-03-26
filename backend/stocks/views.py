@@ -50,6 +50,7 @@ def get_stock_data(request, symbol):
             "currency": data.get("currency"),
             "price": data.get("price"),
             "exchange": data.get("exchange"),
+            "ceo": data.get("ceo"),
             "website": data.get("website")
         }
         cache.set(cache_key, stock_info, timeout=86400)
@@ -92,7 +93,8 @@ def get_stock_history(request, symbol):
                 "open": entry.get("open"),
                 "high": entry.get("high"),
                 "low": entry.get("low"),
-                "close": entry.get("close")
+                "close": entry.get("close"),
+                "volume": entry.get("volume")
             }
             for entry in data.get("historical", [])
         ]
